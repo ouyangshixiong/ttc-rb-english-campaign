@@ -76,6 +76,7 @@ pipeline {
           dir ('./charts/ttc-rb-english-campaign') {
             container('maven') {
               //sh 'jx step changelog --version v\$(cat ../../VERSION)'
+              sh 'helm init --client-only --stable-repo-url=https://kubernetes.oss-cn-hangzhou.aliyuncs.com/charts'
               // release the helm chart
               sh 'make release'
               // promote through all 'Auto' promotion Environments
